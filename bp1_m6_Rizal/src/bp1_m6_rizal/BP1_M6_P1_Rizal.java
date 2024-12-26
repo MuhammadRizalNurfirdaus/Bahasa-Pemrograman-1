@@ -11,6 +11,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -22,7 +31,11 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     koneksi koneksi;
-    
+    JasperReport JR;
+    JasperPrint JP;
+    Map param = new HashMap();
+    JasperDesign JD;
+
 
     /**
      * Creates new form BP1_M6_P1_Rizal
@@ -36,7 +49,7 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
         Object header[] = {"NIM", "NAMA", "JENIS KELAMIN", "PRODI", "ALAMAT"};
         DefaultTableModel data = new DefaultTableModel(null, header);
         jTable1.setModel(data);
-        String sql = "SELECT nim, nama, jk, prodi, alamat FROM tabel_mhs";
+        String sql = "SELECT nim, nama, jk, prodi, alamat FROM table_mhs";
         try {
             st = koneksi.con.createStatement();
             rs = st.executeQuery(sql);
@@ -72,7 +85,7 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
         // Konfirmasi penyimpanan data
         int confirm = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin menyimpan data?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         if (confirm == JOptionPane.YES_OPTION) {
-            String sql = "INSERT INTO tabel_mhs (nim, nama, jk, prodi, alamat) VALUES ('"
+            String sql = "INSERT INTO table_mhs (nim, nama, jk, prodi, alamat) VALUES ('"
                     + jTextField1.getText() + "', '"
                     + jTextField2.getText() + "', '"
                     + jk + "', '"
@@ -130,6 +143,7 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        Report = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,6 +213,13 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable1);
 
+        Report.setText("Report");
+        Report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -226,9 +247,12 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ButtonSimpan)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Report)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ButtonSimpan)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton2)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,7 +305,9 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ButtonSimpan)
                             .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(jButton3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Report))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -300,43 +326,65 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        // Button Edit
-        try()
-        {
-            String jk="";
-            if(jRadioButton1.isSelected())
-            {jk=jRadioButton1.getText();}
-            else
-            {jk=jRadioButton2.getText();}
-            
-            String sql_edit = "UPDATE mhs SET nim = '"+jTextField1.getText()
-                    +"','"+jTextField2.getText()
-                    +"','"+jk
-                    +"','"+jComboBox1.getText()
-                    +"','"+jTextArea1.getText()
-                    +"'WHERE nim='"+jTextField1.getText()
-                    +"'";
-            
+        // Button Edit                                     
+    try {
+        int confirm = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin mengedit data?", "Konfirmasi Edit", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            String jk = jRadioButton1.isSelected() ? jRadioButton1.getText() : jRadioButton2.getText();
+
+            String sql_edit = "UPDATE table_mhs SET nama = '"
+                    + jTextField2.getText()
+                    + "', jk = '" + jk
+                    + "', prodi = '" + jComboBox1.getSelectedItem().toString()
+                    + "', alamat = '" + jTextArea1.getText()
+                    + "' WHERE nim = '" + jTextField1.getText() + "'";
             st.executeUpdate(sql_edit);
-            JOptionPane.showMessageDialog(null, "Data Mahasiswa Berhenti Di Update");
+            JOptionPane.showMessageDialog(null, "Data Mahasiswa Berhasil Diupdate");
+
+            // Muat ulang data di tabel dan reset form
+            load_data();
+            reset_form();
         }
-        catch (SQLException e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-       }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
+
+
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        // Button Hapus
-        try
-        {
-            st = koneksi.con.createStatement();
-            String sql_delete = "Delete FKOM mhs WHERE nim='"+jTextField1.getText()+"'";
+        // Button Hapus                                
+    try {
+        int confirm = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin menghapus data?", "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            String sql_delete = "DELETE FROM table_mhs WHERE nim = '" + jTextField1.getText() + "'";
             st.executeUpdate(sql_delete);
-            JOptionPane.showMessageDialog(null. e);
+            JOptionPane.showMessageDialog(null, "Data Mahasiswa Berhasil Dihapus");
+
+            // Muat ulang data di tabel dan reset form
+            load_data();
+            reset_form();
         }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+    }
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
+        // TODO add your handling code here:
+        try {
+        File file = new File("C:\\Users\\Muhammad Rizal Nur F\\Semester 3\\Bahasa Pemrograman 1\\BP1_M9_Rizal\\src\\bp1_m9_rizal\\report1.jrxml");
+        JD = JRXmlLoader.load(file);
+        param.clear();
+        JR = JasperCompileManager.compileReport(JD);  
+        JP = JasperFillManager.fillReport(JR, param, koneksi.con);  
+        JasperViewer JV = new JasperViewer(JP, false);
+        JV.setVisible(true);
+    } catch (JRException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+    }//GEN-LAST:event_ReportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,6 +423,7 @@ public class BP1_M6_P1_Rizal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSimpan;
+    private javax.swing.JButton Report;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
