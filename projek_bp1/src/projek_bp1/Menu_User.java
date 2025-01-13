@@ -18,15 +18,22 @@ public class Menu_User extends javax.swing.JFrame {
 
     Statement st;
     ResultSet rs;
+<<<<<<< HEAD
     Connection con;
     koneksi koneksi;
 
     private int hargaPerMalam = 0;
 
+=======
+    Connection con;  // Menambahkan deklarasi untuk koneksi database
+    koneksi koneksi;
+
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     public Menu_User() {
         koneksi = new koneksi();
         initComponents();
         load_data();
+<<<<<<< HEAD
         load_data1();
 
         // Menambahkan listener untuk comboBox dan spinner
@@ -53,6 +60,23 @@ public class Menu_User extends javax.swing.JFrame {
                     rs.getString("harga")
                 };
                 // Proses data k jika diperlukan
+=======
+    }
+
+    private void load_data() {
+        String sql = "SELECT nama, umur, jk, nohp, alamat FROM data_pemesan";
+        try {
+            con = koneksi.con;  // Mengambil koneksi dari objek koneksi
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                String k1 = rs.getString("nama");
+                String k2 = rs.getString("umur");
+                String k3 = rs.getString("jk");
+                String k4 = rs.getString("nohp");
+                String k5 = rs.getString("alamat");
+                String[] k = {k1, k2, k3, k4, k5};
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -62,6 +86,7 @@ public class Menu_User extends javax.swing.JFrame {
     private void input_data() {
         try {
             // Validasi input
+<<<<<<< HEAD
             if (jTextField1.getText().isEmpty() ||
                 jTextField2.getText().isEmpty() ||
                 (!jRadioButton1.isSelected() && !jRadioButton2.isSelected()) ||
@@ -92,12 +117,33 @@ public class Menu_User extends javax.swing.JFrame {
                 showReceipt(jTextField1.getText(), jk, jComboBox1.getSelectedItem().toString(), jumlahHari, totalHarga);
                 reset_form();
                 load_data();
+=======
+            if (jTextField1.getText().isEmpty() || jTextField2.getText().isEmpty() || 
+                (!jRadioButton1.isSelected() && !jRadioButton2.isSelected()) || jTextArea1.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Data Harus Diisi!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Ambil nilai jenis kelamin
+            String jk = jRadioButton1.isSelected() ? jRadioButton1.getText() : jRadioButton2.getText();
+
+            // Konfirmasi penyimpanan data
+            int confirm = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin ingin menyimpan data?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                String sql = "INSERT INTO data_pemesan (nama, umur, jk, nohp, alamat) VALUES ('" + jTextField1.getText() + "', '" + jTextField2.getText() + "', '" + jk + "', '" + jTextField3.getText() + "', '" + jTextArea1.getText() + "')";
+                st = con.createStatement();
+                st.execute(sql);
+                JOptionPane.showMessageDialog(null, "Data Berhasil Disimpan");
+                load_data();
+                reset_form();
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
 
+<<<<<<< HEAD
     private void showReceipt(String nama, String jenisKelamin, String kamar, int lamaMenginap, int totalHarga) {
         StringBuilder struk = new StringBuilder();
         struk.append("=== STRUK PEMBELIAN ===\n");
@@ -111,6 +157,8 @@ public class Menu_User extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, struk.toString(), "Struk Pembelian", JOptionPane.INFORMATION_MESSAGE);
     }
 
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     private void reset_form() {
         jTextField1.setText("");
         jTextField2.setText("");
@@ -118,6 +166,7 @@ public class Menu_User extends javax.swing.JFrame {
         jRadioButton2.setSelected(false);
         jTextField3.setText("");
         jTextArea1.setText("");
+<<<<<<< HEAD
         jTextField5.setText("");
         jComboBox1.setSelectedIndex(0);
         jSpinner1.setValue(0);
@@ -184,6 +233,10 @@ public class Menu_User extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
+=======
+    }
+
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -210,6 +263,7 @@ public class Menu_User extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+<<<<<<< HEAD
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -223,6 +277,8 @@ public class Menu_User extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,6 +339,7 @@ public class Menu_User extends javax.swing.JFrame {
             }
         });
 
+<<<<<<< HEAD
         jLabel9.setText("Pencarian lewat ID");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -332,11 +389,14 @@ public class Menu_User extends javax.swing.JFrame {
 
         jLabel14.setText("Harga");
 
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(222, 222, 222)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -394,10 +454,44 @@ public class Menu_User extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(528, 528, 528))
+=======
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(221, 221, 221)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addGap(33, 33, 33)
+                        .addComponent(jRadioButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel8))
+                    .addComponent(jTextField3)
+                    .addComponent(jTextField1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(jButton1)
+                .addGap(114, 114, 114)
+                .addComponent(jButton2))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(248, 248, 248)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(222, 222, 222)
+                .addComponent(jLabel2))
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(11, 11, 11)
@@ -457,6 +551,42 @@ public class Menu_User extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(56, Short.MAX_VALUE))))
+=======
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(33, 33, 33))
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
         );
 
         pack();
@@ -477,6 +607,11 @@ public class Menu_User extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         input_data();
+<<<<<<< HEAD
+=======
+        Form_Pemesanan fp = new Form_Pemesanan();
+            fp.setVisible(true);
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
             this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -493,6 +628,7 @@ public class Menu_User extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+<<<<<<< HEAD
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here:
          if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
@@ -576,6 +712,8 @@ public class Menu_User extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     /**
      * @param args the command line arguments
      */
@@ -614,6 +752,7 @@ public class Menu_User extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+<<<<<<< HEAD
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -621,6 +760,9 @@ public class Menu_User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+=======
+    private javax.swing.JLabel jLabel1;
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -628,6 +770,7 @@ public class Menu_User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+<<<<<<< HEAD
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
@@ -635,12 +778,20 @@ public class Menu_User extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
+=======
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+<<<<<<< HEAD
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
     // End of variables declaration//GEN-END:variables
 }

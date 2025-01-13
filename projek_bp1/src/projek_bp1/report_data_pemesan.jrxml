@@ -9,11 +9,15 @@
      data_pemesan.`umur` AS data_pemesan_umur,
      data_pemesan.`jk` AS data_pemesan_jk,
      data_pemesan.`nohp` AS data_pemesan_nohp,
+<<<<<<< HEAD
      data_pemesan.`alamat` AS data_pemesan_alamat,
      data_pemesan.`tanggal` AS data_pemesan_tanggal,
      data_pemesan.`pilih_kamar` AS data_pemesan_pilih_kamar,
      data_pemesan.`lama_menginap` AS data_pemesan_lama_menginap,
      data_pemesan.`harga` AS data_pemesan_harga
+=======
+     data_pemesan.`alamat` AS data_pemesan_alamat
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 FROM
      `data_pemesan` data_pemesan]]>
 	</queryString>
@@ -22,10 +26,13 @@ FROM
 	<field name="data_pemesan_jk" class="java.lang.String"/>
 	<field name="data_pemesan_nohp" class="java.lang.String"/>
 	<field name="data_pemesan_alamat" class="java.lang.String"/>
+<<<<<<< HEAD
 	<field name="data_pemesan_tanggal" class="java.lang.String"/>
 	<field name="data_pemesan_pilih_kamar" class="java.lang.String"/>
 	<field name="data_pemesan_lama_menginap" class="java.lang.String"/>
 	<field name="data_pemesan_harga" class="java.lang.String"/>
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 	<background>
 		<band/>
 	</background>
@@ -34,7 +41,11 @@ FROM
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
 				<staticText>
+<<<<<<< HEAD
 					<reportElement x="193" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+=======
+					<reportElement x="169" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
@@ -52,6 +63,7 @@ FROM
 				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666"/>
 			</line>
 			<staticText>
+<<<<<<< HEAD
 				<reportElement mode="Opaque" x="0" y="0" width="61" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
@@ -113,6 +125,41 @@ FROM
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[harga]]></text>
+=======
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Umur ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jenis Kelamin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Handphone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 			</staticText>
 		</band>
 	</columnHeader>
@@ -122,40 +169,61 @@ FROM
 				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1"/>
 			</line>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement x="0" y="0" width="61" height="20"/>
+=======
+				<reportElement x="0" y="0" width="111" height="20"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_pemesan_nama}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement x="61" y="0" width="61" height="20"/>
+=======
+				<reportElement x="111" y="0" width="111" height="20"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_pemesan_umur}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement x="122" y="0" width="61" height="20"/>
+=======
+				<reportElement x="222" y="0" width="111" height="20"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_pemesan_jk}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement x="183" y="0" width="61" height="20"/>
+=======
+				<reportElement x="333" y="0" width="111" height="20"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_pemesan_nohp}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
+<<<<<<< HEAD
 				<reportElement x="244" y="0" width="61" height="20"/>
+=======
+				<reportElement x="444" y="0" width="111" height="20"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 				<textElement>
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_pemesan_alamat}]]></textFieldExpression>
 			</textField>
+<<<<<<< HEAD
 			<textField isStretchWithOverflow="true">
 				<reportElement x="305" y="0" width="61" height="20"/>
 				<textElement>
@@ -184,6 +252,8 @@ FROM
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_pemesan_harga}]]></textFieldExpression>
 			</textField>
+=======
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 		</band>
 	</detail>
 	<columnFooter>

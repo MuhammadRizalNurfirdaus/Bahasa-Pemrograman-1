@@ -24,7 +24,11 @@ public class koneksi {
         String id = "root"; // user DBMS MySQL
         String pass = ""; // password DBMS MySQL
         String driver = "com.mysql.cj.jdbc.Driver"; // driver MySQL versi terbaru
+<<<<<<< HEAD
         String url = "jdbc:mysql://localhost:3306/project_bp1"; // nama database : db_mhs
+=======
+        String url = "jdbc:mysql://localhost:3306/projek_bp1"; // nama database : db_mhs
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 
         try {
             Class.forName(driver);

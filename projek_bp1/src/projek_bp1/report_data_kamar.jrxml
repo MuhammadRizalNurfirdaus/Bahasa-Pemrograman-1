@@ -26,7 +26,11 @@ FROM
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
 				<staticText>
+<<<<<<< HEAD
 					<reportElement x="197" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+=======
+					<reportElement x="183" y="20" width="234" height="43" forecolor="#FFFFFF"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
@@ -48,35 +52,55 @@ FROM
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[id]]></text>
+=======
+				<text><![CDATA[ID]]></text>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[kode_kamar]]></text>
+=======
+				<text><![CDATA[Kode Kamar]]></text>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[nama_kamar]]></text>
+=======
+				<text><![CDATA[Nama Kamar]]></text>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[nama_tingkatan]]></text>
+=======
+				<text><![CDATA[Nama Tingkatan]]></text>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
+<<<<<<< HEAD
 				<text><![CDATA[jumlah]]></text>
+=======
+				<text><![CDATA[Jumlah]]></text>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
 			</staticText>
 		</band>
 	</columnHeader>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contoh Augmented Reality</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aframe-ar.js/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs>
+    <!-- Penanda untuk melacak objek AR -->
+    <a-marker preset="hiro">
+      <!-- Objek 3D yang akan ditampilkan saat penanda terdeteksi -->
+      <a-entity geometry="primitive: box; width: 1; height: 1; depth: 1;" material="color: red" position="0 0.5 0"></a-entity>
+    </a-marker>
+    
+    <!-- Kamera untuk AR -->
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+</html>

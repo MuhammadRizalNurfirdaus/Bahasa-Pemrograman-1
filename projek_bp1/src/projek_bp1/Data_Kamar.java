@@ -500,7 +500,11 @@ public class Data_Kamar extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         try {
+<<<<<<< HEAD
             File file = new File("C:\\Users\\Muhammad Rizal Nur F\\Semester 3\\Bahasa Pemrograman 1\\modul10\\projek_bp1\\src\\projek_bp1\\report_data_kamar.jrxml");
+=======
+            File file = new File("C:\\Users\\Muhammad Rizal Nur F\\Semester 3\\Bahasa Pemrograman 1\\projek_bp1\\src\\projek_bp1\\report_data_kamar.jrxml");
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
             System.out.println("File path: " + file.getAbsolutePath());
         if (!file.exists()) {
             JOptionPane.showMessageDialog(null, "File report tidak ditemukan!");

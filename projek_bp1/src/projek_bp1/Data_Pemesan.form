@@ -62,6 +62,10 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
+=======
+                                      <EmptySpace max="32767" attributes="0"/>
+>>>>>>> 8635423add62d691360d0294b44df47ddef0ee51
                                       <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   </Group>
